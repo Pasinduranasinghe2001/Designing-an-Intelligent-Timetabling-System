@@ -120,6 +120,6 @@ Simulated Annealing for solving a complex timetabling problem. The system produc
 valid timetable that satisfies all hard constraints and minimizes soft constraint violations
 effectively.
 
-12. References
-1. Russell, S., & Norvig, P. Artificial Intelligence: A Modern Approach
-2. Wikipedia – Simulated Annealing
+# References
+ Russell, S., & Norvig, P. Artificial Intelligence: A Modern Approach
+ Wikipedia – Simulated Annealing
