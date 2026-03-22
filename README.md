@@ -1,13 +1,13 @@
 # Designing-an-Intelligent-Timetabling-System
 
-1. Introduction
+# Introduction
 Timetabling is a complex scheduling problem where multiple constraints must be satisfied
 simultaneously. In this assignment, an intelligent timetabling system is developed to
 generate an optimal timetable for the Department of Computer Engineering. The system
 uses constraint-based modeling combined with a Simulated Annealing optimization
 approach to produce a feasible and near-optimal solution.
 
-2. Personalized Parameter Derivation
+# Personalized Parameter Derivation
 The parameters for this system are derived from my registration number 2022/E/042.
 • A = 2 (last digit)
 • B = 4 (second last digit)
@@ -18,7 +18,7 @@ Using these values:
 • Time slots per day = 4 + (1 mod 2) = 5
 These parameters were used throughout the implementation.
 
-3. Knowledge Base Representation
+# Knowledge Base Representation
 To model the system logically, the following predicates are defined:
 • Course(c) → c is a course
 • Lecturer(l) → l is a lecturer
@@ -31,7 +31,7 @@ To model the system logically, the following predicates are defined:
 • Lab(c) → c is a lab session
 These predicates form the basis for expressing constraints.
 
-4. Hard Constraints
+# Hard Constraints
 The following hard constraints must always be satisfied.
 HC1: No resource conflicts
 A lecturer, room, or student group cannot be assigned to more than one course at the same
@@ -49,7 +49,7 @@ HC4: Lecturer availability
 Lecturer L4 is not available on Friday during slots 4 and 5.
 Assigned(c, r, Fri, s) ∧ Teaches(L4, c) → s ≠ 4,5
 
-5. Soft Constraints
+# Soft Constraints
 Unlike hard constraints, soft constraints can be violated but are minimized.
 SC1: Lecturer Compactness (Penalty = 7 [5+2])
 Lecturers prefer to have consecutive classes instead of spread-out schedules.
@@ -61,13 +61,13 @@ SC3: Room Balancing (Penalty = 3[2+1])
 Room usage should be evenly distributed.
 SC3 = Variance of room usage
 
-6. Heuristic Function
+# Heuristic Function
 The quality of a timetable is evaluated using:
 H = (HC × K) +( SC1 × 7) +( SC2 × 7) +( SC3 × 3)
 Where K = 1000.
 This ensures that hard constraints are always prioritized over soft constraints.
 
-7. Simulated Annealing Approach
+# Simulated Annealing Approach
 Simulated Annealing is used to search for an optimal timetable.
 The reason for selecting this method is that the timetable problem has a large and complex
 search space with many local minima. A simple local search algorithm can easily get
@@ -82,7 +82,7 @@ Parameter Settings
 These values were chosen to allow sufficient exploration at the beginning and gradual
 convergence.
 
-8. Hard Constraint Verification
+# Hard Constraint Verification
 The final solution satisfies all hard constraints:
 • No lecturer conflicts
 • No room conflicts
@@ -92,7 +92,8 @@ The final solution satisfies all hard constraints:
 • Lecturer L4 is not assigned on Friday afternoon
 Therefore:
 HC violations = 0
-10. Score Analysis
+
+# Score Analysis
 The final score obtained is:
 Final Score = 20
 Breakdown:
@@ -102,18 +103,18 @@ Breakdown:
 • SC3 = 2 → 2 × 3 = 6
 Total = 20
 
-9. Discussion
+# Discussion
 The system successfully minimized lecturer spread (SC1 = 0), which indicates efficient
 scheduling. A small number of violations exist in SC2 and SC3, which is acceptable since
 soft constraints are not strictly enforced. The result demonstrates a good balance between
 feasibility and optimization.
 
-10. Critical Analysis
+# Critical Analysis
 One limitation of this approach is that it assumes a static environment. In real-world
 scenarios, timetables may need to be updated frequently due to changes such as lecturer
 availability or room issues.
 
-11. Conclusion
+# Conclusion
 This assignment successfully demonstrates the use of constraint-based modeling and
 Simulated Annealing for solving a complex timetabling problem. The system produces a
 valid timetable that satisfies all hard constraints and minimizes soft constraint violations
